@@ -16,11 +16,11 @@ Node helpers use [GOT](https://github.com/sindresorhus/got) as dependency to mak
 
 Functions:
 
-- issueAccessToken
+- [issueAccessToken](https://github.com/mesqueeb/line-ts/blob/production/src/libNode/issueAccessToken.ts)
 
 ### Browser & Node
 
 Functions:
 
-- getLineLoginUrl
-- getParamsFromLoginCallback
+- [getLineLoginUrl](https://github.com/mesqueeb/line-ts/blob/production/src/lib/getLineLoginUrl.ts)
+- [getParamsFromLoginCallback](https://github.com/mesqueeb/line-ts/blob/production/src/lib/getParamsFromLoginCallback.ts)
