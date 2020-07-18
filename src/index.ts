@@ -1,2 +1,2 @@
-export * from './lib/index'
-export * from './libNode/index'
+export * from './lib/getLineLogin'
+export * from './lib/getParamsFromLoginCallback'

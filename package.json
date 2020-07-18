@@ -1,7 +1,7 @@
 {
   "name": "line-ts",
   "sideEffects": false,
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "LINE SDK for TypeScript",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -10,15 +10,9 @@
     "test": "ava",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "rollup": "rollup -c build.js",
-    "build": "npm run lint && npm run test && npm run rollup"
+    "build": "npm run lint && npm run rollup"
   },
-  "engines": {
-    "node": ">=10.19.0"
-  },
-  "dependencies": {
-    "got": "11.5.0",
-    "jsonwebtoken": "^8.5.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/jsonwebtoken": "^8.5.0",
     "@typescript-eslint/eslint-plugin": "^2.34.0",
@@ -35,7 +29,10 @@
     "typescript": "^3.9.7"
   },
   "keywords": [
-    "line"
+    "line",
+    "typescript",
+    "line-ts",
+    "line-sdk"
   ],
   "author": "Luca Ban - Mesqueeb",
   "license": "MIT",
