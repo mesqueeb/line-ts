@@ -1,4 +1,5 @@
 import got from 'got';
+import { decode } from 'jsonwebtoken';
 
 /**
  * Generates a non-safe random string which can have duplicates around 7 million generations.
@@ -13,7 +14,7 @@ function randomString(length = 20) {
 /**
  * Get a URL that users can access to login with LINE and be redirected to your app again.
  *
- * Further documentation: https://developers.line.biz/en/docs/line-login/integrate-line-login/#making-an-authorization-request
+ * LINE documentation: https://developers.line.biz/en/docs/line-login/integrate-line-login/#making-an-authorization-request
  *
  * @param {LineLoginUrlParams} params Only client_id & redirect_uri are required props.
  * @returns {string} the `https://access.line.me/oauth2/v2.1/authorize${query}` URL with correct query
@@ -75,6 +76,8 @@ function __awaiter(thisArg, _arguments, P, generator) {
  * (Node only) Makes a POST request to retrieve an access token from LINE. This uses GOT as a dependency to make the request.
  * Can throw errors.
  *
+ * LINE documentation: https://developers.line.biz/en/docs/line-login/integrate-line-login/#get-access-token
+ *
  * @param {IssueAccessTokenParams} params
  * @returns {Promise<IssueAccessTokenResponse>}
  */
@@ -96,4 +99,14 @@ function issueAccessToken(params) {
     });
 }
 
-export { getLineLoginUrl, getParamsFromLoginCallback, issueAccessToken };
+/**
+ * (Node only) Returns a decoded LINE id token. Uses the nodeJS 'jsonwebtoken' dependency.
+ * This id Token should be validated!
+ * LINE documentation: https://developers.line.biz/en/docs/line-login/integrate-line-login/#decode-and-validate-id-token
+ */
+function decodeIdToken(idToken) {
+    // get the decoded payload ignoring signature, no secretOrPrivateKey needed
+    return decode(idToken, { complete: true });
+}
+
+export { decodeIdToken, getLineLoginUrl, getParamsFromLoginCallback, issueAccessToken };

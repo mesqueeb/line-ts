@@ -57,6 +57,8 @@ export declare type IssueAccessTokenResponse = {
  * (Node only) Makes a POST request to retrieve an access token from LINE. This uses GOT as a dependency to make the request.
  * Can throw errors.
  *
+ * LINE documentation: https://developers.line.biz/en/docs/line-login/integrate-line-login/#get-access-token
+ *
  * @param {IssueAccessTokenParams} params
  * @returns {Promise<IssueAccessTokenResponse>}
  */

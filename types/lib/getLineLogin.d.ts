@@ -48,7 +48,7 @@ export declare type LineLoginUrlParams = {
 /**
  * Get a URL that users can access to login with LINE and be redirected to your app again.
  *
- * Further documentation: https://developers.line.biz/en/docs/line-login/integrate-line-login/#making-an-authorization-request
+ * LINE documentation: https://developers.line.biz/en/docs/line-login/integrate-line-login/#making-an-authorization-request
  *
  * @param {LineLoginUrlParams} params Only client_id & redirect_uri are required props.
  * @returns {string} the `https://access.line.me/oauth2/v2.1/authorize${query}` URL with correct query
