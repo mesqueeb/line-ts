@@ -1,4 +1,4 @@
-declare type IssueAccessTokenParams = {
+export declare type IssueAccessTokenParams = {
     /**
      * (Optional - default: 'authorization_code') authorization_code. Specifies the grant type.
      */
@@ -61,4 +61,3 @@ export declare type IssueAccessTokenResponse = {
  * @returns {Promise<IssueAccessTokenResponse>}
  */
 export declare function issueAccessToken(params: IssueAccessTokenParams): Promise<IssueAccessTokenResponse>;
-export {};

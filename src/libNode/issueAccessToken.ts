@@ -1,6 +1,6 @@
 import got from 'got'
 
-type IssueAccessTokenParams = {
+export type IssueAccessTokenParams = {
   /**
    * (Optional - default: 'authorization_code') authorization_code. Specifies the grant type.
    */
