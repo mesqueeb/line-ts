@@ -27,7 +27,9 @@ export declare type LoginCallbackParamsError = {
     state?: string;
 };
 /**
- * Once the user is authenticated and authorization is complete, the HTTP status code 302 and the following query parameters are returned in the callback URL.
+ * Once the user is authenticated and authorization is complete, the HTTP status code 302 and query parameters are returned in the callback URL. This function converts the callback URL to an object with the query parameters.
+ *
+ * @param {string} callbackUrlTriggered eg. https://client.example.org/cb?code=abcd1234&state=0987poi&friendship_status_changed=true
  * @returns {LoginCallbackParamsSuccess | LoginCallbackParamsError}
  * @example // Success example:
 HTTP/1.1 302 Found

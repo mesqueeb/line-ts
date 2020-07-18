@@ -58,8 +58,9 @@ export type IssueAccessTokenResponse = {
 }
 
 /**
- * Makes a POST request to retrieve an access token from LINE. This uses GOT as a dependency to make the request.
+ * (Node only) Makes a POST request to retrieve an access token from LINE. This uses GOT as a dependency to make the request.
  * Can throw errors.
+ * 
  * @param {IssueAccessTokenParams} params
  * @returns {Promise<IssueAccessTokenResponse>}
  */
