@@ -4,7 +4,10 @@ import got from 'got';
  * Generates a non-safe random string which can have duplicates around 7 million generations.
  */
 function randomString(length = 20) {
-    return Array(length).fill(0).map(() => Math.random().toString(36).charAt(2)).join('');
+    return Array(length)
+        .fill(0)
+        .map(() => Math.random().toString(36).charAt(2))
+        .join('');
 }
 
 /**
@@ -20,7 +23,7 @@ function getLineLoginUrl(params) {
     const redirect_uri = _redirect_uri.replace(/:/g, '%3A').replace(/\//g, '%2F');
     const paramsObject = Object.assign(Object.assign({}, params), { response_type, redirect_uri, state, scope });
     const query = Object.entries(paramsObject)
-        .map(entry => entry.join('='))
+        .map((entry) => entry.join('='))
         .join('&');
     return `https://access.line.me/oauth2/v2.1/authorize?${query}`;
 }
@@ -38,7 +41,7 @@ Location: https://example.com/callback?error=access_denied&error_description=The
  */
 function getParamsFromLoginCallback(callbackUrlTriggered) {
     const query = callbackUrlTriggered.split('?')[1];
-    const queryEntries = query.split('&').map(q => q.split('='));
+    const queryEntries = query.split('&').map((q) => q.split('='));
     const queryObject = Object.fromEntries(queryEntries);
     return queryObject;
 }
@@ -77,7 +80,7 @@ function __awaiter(thisArg, _arguments, P, generator) {
  */
 function issueAccessToken(params) {
     return __awaiter(this, void 0, void 0, function* () {
-        const { grant_type = 'authorization_code', code, redirect_uri, client_id, client_secret, } = params;
+        const { grant_type = 'authorization_code', code, redirect_uri, client_id, client_secret } = params;
         if (!code || !redirect_uri || !client_id || !client_secret) {
             throw new Error('Missing information in params');
         }
@@ -87,8 +90,7 @@ function issueAccessToken(params) {
          * Content-Type: application/x-www-form-urlencoded
          */
         const form = { grant_type, code, redirect_uri, client_id, client_secret };
-        const { body } = yield got
-            .post('https://api.line.me/oauth2/v2.1/token', { form, responseType: 'json' });
+        const { body, } = yield got.post('https://api.line.me/oauth2/v2.1/token', { form, responseType: 'json' });
         const response = body.data;
         return response;
     });
