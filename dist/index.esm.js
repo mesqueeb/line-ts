@@ -1,5 +1,5 @@
 import got from 'got';
-import { decode } from 'jsonwebtoken';
+import jwt from 'jsonwebtoken';
 
 /**
  * Generates a non-safe random string which can have duplicates around 7 million generations.
@@ -72,6 +72,7 @@ function __awaiter(thisArg, _arguments, P, generator) {
     });
 }
 
+const post = got.post;
 /**
  * (Node only) Makes a POST request to retrieve an access token from LINE. This uses GOT as a dependency to make the request.
  * Can throw errors.
@@ -93,12 +94,13 @@ function issueAccessToken(params) {
          * Content-Type: application/x-www-form-urlencoded
          */
         const form = { grant_type, code, redirect_uri, client_id, client_secret };
-        const { body, } = yield got.post('https://api.line.me/oauth2/v2.1/token', { form, responseType: 'json' });
+        const { body, } = yield post('https://api.line.me/oauth2/v2.1/token', { form, responseType: 'json' });
         const response = body.data;
         return response;
     });
 }
 
+const { decode } = jwt;
 /**
  * (Node only) Returns a decoded LINE id token. Uses the nodeJS 'jsonwebtoken' dependency.
  * This id Token should be validated!

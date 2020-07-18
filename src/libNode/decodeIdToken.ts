@@ -1,4 +1,5 @@
-import { decode } from 'jsonwebtoken'
+import jwt from 'jsonwebtoken'
+const { decode } = jwt
 
 export type DecodedIdToken = {
   header: { typ: 'JWT'; alg: 'HS256' }
@@ -62,5 +63,5 @@ export type DecodedIdToken = {
  */
 export function decodeIdToken(idToken: string): DecodedIdToken {
   // get the decoded payload ignoring signature, no secretOrPrivateKey needed
-  return decode(idToken, { complete: true })
+  return decode(idToken, { complete: true }) as DecodedIdToken
 }

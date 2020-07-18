@@ -5,7 +5,7 @@ Object.defineProperty(exports, '__esModule', { value: true });
 function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
 var got = _interopDefault(require('got'));
-var jsonwebtoken = require('jsonwebtoken');
+var jwt = _interopDefault(require('jsonwebtoken'));
 
 /**
  * Generates a non-safe random string which can have duplicates around 7 million generations.
@@ -78,6 +78,7 @@ function __awaiter(thisArg, _arguments, P, generator) {
     });
 }
 
+const post = got.post;
 /**
  * (Node only) Makes a POST request to retrieve an access token from LINE. This uses GOT as a dependency to make the request.
  * Can throw errors.
@@ -99,12 +100,13 @@ function issueAccessToken(params) {
          * Content-Type: application/x-www-form-urlencoded
          */
         const form = { grant_type, code, redirect_uri, client_id, client_secret };
-        const { body, } = yield got.post('https://api.line.me/oauth2/v2.1/token', { form, responseType: 'json' });
+        const { body, } = yield post('https://api.line.me/oauth2/v2.1/token', { form, responseType: 'json' });
         const response = body.data;
         return response;
     });
 }
 
+const { decode } = jwt;
 /**
  * (Node only) Returns a decoded LINE id token. Uses the nodeJS 'jsonwebtoken' dependency.
  * This id Token should be validated!
@@ -112,7 +114,7 @@ function issueAccessToken(params) {
  */
 function decodeIdToken(idToken) {
     // get the decoded payload ignoring signature, no secretOrPrivateKey needed
-    return jsonwebtoken.decode(idToken, { complete: true });
+    return decode(idToken, { complete: true });
 }
 
 exports.decodeIdToken = decodeIdToken;

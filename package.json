@@ -1,7 +1,7 @@
 {
   "name": "line-ts",
   "sideEffects": false,
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "LINE SDK for TypeScript",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -10,7 +10,7 @@
     "test": "ava",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "rollup": "rollup -c build.js",
-    "build": "npm run lint && npm run rollup"
+    "build": "npm run lint && npm run test && npm run rollup"
   },
   "engines": {
     "node": ">=10.19.0"
@@ -20,6 +20,7 @@
     "jsonwebtoken": "^8.5.1"
   },
   "devDependencies": {
+    "@types/jsonwebtoken": "^8.5.0",
     "@typescript-eslint/eslint-plugin": "^2.34.0",
     "@typescript-eslint/parser": "^2.34.0",
     "ava": "^3.10.1",

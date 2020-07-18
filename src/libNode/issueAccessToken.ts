@@ -1,4 +1,5 @@
 import got from 'got'
+const post = got.post
 
 export type IssueAccessTokenParams = {
   /**
@@ -83,7 +84,7 @@ export async function issueAccessToken(
     body,
   }: {
     body: { data: IssueAccessTokenResponse }
-  } = await got.post('https://api.line.me/oauth2/v2.1/token', { form, responseType: 'json' })
+  } = await post('https://api.line.me/oauth2/v2.1/token', { form, responseType: 'json' })
   const response: IssueAccessTokenResponse = body.data
   return response
 }
