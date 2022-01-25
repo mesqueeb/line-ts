@@ -61,7 +61,8 @@
   },
   "np": {
     "yarn": false,
-    "branch": "production"
+    "branch": "production",
+    "noTests": true
   },
   "eslintConfig": {
     "ignorePatterns": [
