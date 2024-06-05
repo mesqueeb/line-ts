@@ -1,2 +1,2 @@
-export * from './lib/getLineLogin'
-export * from './lib/getParamsFromLoginCallback'
+export * from './lib/getLineLogin.js'
+export * from './lib/getParamsFromLoginCallback.js'
